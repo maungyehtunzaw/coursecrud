@@ -1,0 +1,21 @@
+<%- contentFor('body') %> <!-- use layout.ejs -->
+<h2>Courses Detail</h2>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img src="/uploads/<%=course.pimg%>" class="card-img-top"/>
+            <div class="card-footer bg-info">
+                <%=course.title %>
+            </div>
+        </div>
+    </div>
+    <div  class="col-md-8">
+        <h2># <%=course.title%></h2>
+        <small><%=course.subject%></small>
+        <p>price : <%=course.price%></p>
+        <p>start date: <%=course.start_date %></p>
+        <p>Duration : <%=course.duration %></p>
+        <h4>Course Detail</h4>
+        <p><%=course.desr%></p>
+    </div>
+</div>

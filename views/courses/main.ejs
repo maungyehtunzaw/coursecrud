@@ -1,0 +1,50 @@
+<%- contentFor('body') %> <!-- use layout.ejs -->
+<h2>Courses</h2>
+<div class="row">
+    <% for(let i=0;i<courses.length;i++) { %> 
+    <div class="col-md-3">
+        <div class="card  mb-2">
+            <div class="card-header bg-dark text-white text-truncate"><%=courses[i].title %></div>
+            <img class="card-img-top" src="/uploads/<%=courses[i].pimg %>" alt="<%=courses[i].title %>" height="150px">
+                <div class="card-body bg-warning">
+                    price : <%=courses[i].price %> MMK<br/>
+                       duration :  <%=courses[i].duration %><br/>
+                       <div class="text-truncate card-text text-mute"><%=courses[i].subject%></div>
+                           
+                </div>
+                <div class="card-footer text-white bg-warning">
+                    <a href="/courses/view/<%=courses[i].id %>" class="btn btn-outline-info">View</a>
+                    <a href="/courses/edit/<%=courses[i].id %>" class="btn btn-outline-primary">Edit</a>                    
+                    <a onclick="return confirm('are you sure?')" href="/courses/delete/<%=courses[i].id %>" class="btn btn-outline-danger">Delete</a>
+                </div>
+        </div>
+    </div>
+    <% }  %> 
+</div>
+<% if (paginate.hasPreviousPages || paginate.hasNextPages(pageCount) ) { %>
+    <nav aria-label="Page navigation example" >
+      <ul class="pagination justify-content-center">
+        <% if (paginate.hasPreviousPages) { %>
+          <li class="page-item">
+            <a href="<%= paginate.href(true) %>" class="page-link">
+              <i class="fa fa-arrow-circle-left"></i>
+              Previous
+            </a>  
+          </li>
+        <% } %>  
+        <% if (pages) { %>
+          <% pages.forEach(function(page, i){ %>
+            <a class="page-link <%= paginate.page == page.number ? 'bg-dark' : ''%>" href="<%= page.url %>"><%= page.number %></a>
+          <% }); %>
+        <% } %>  
+        <% if (paginate.hasNextPages(pageCount)) { %>
+          <li class="page-item">
+            <a href="<%= paginate.href() %>" class="page-link">
+              Next &nbsp;
+              <i class="fa fa-arrow-circle-right"></i>
+            </a>  
+          </li>
+        <% } %>  
+        </ul>      
+    </nav>
+    <% } %>
