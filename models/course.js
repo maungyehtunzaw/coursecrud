@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     start_date:DataTypes.DATEONLY,
     desr: DataTypes.TEXT,
     pimg:DataTypes.STRING,
+  },
+  {
+    tableName:'courses',
+    timestamps: true,
   });
 
   return Course;
